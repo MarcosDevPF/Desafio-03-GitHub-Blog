@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+    min-width: 100vw;
+    
     img {
-        max-width: 100%;
+        width: 100%;
     }
 `
