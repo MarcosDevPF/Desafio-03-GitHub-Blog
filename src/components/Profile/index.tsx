@@ -2,17 +2,49 @@ import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from "@fortawesome/
 import { ProfileContainer, ProfileContent, ProfileIcons } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { useEffect, useState } from "react";
+import { api } from "../../lib/axios";
+
+interface Profile {
+    avatar_url: string,
+    name: string,
+    bio: string,
+    html_url: string,
+    company: string,
+    login: string,
+    followers: number
+}
 
 export function Profile() {
+    const [profile, setProfile] = useState<Profile | null>(null)
+
+    useEffect(() => {
+        api.get('/users/MarcosDevPF')
+            .then(response => {
+                setProfile(response.data)
+            })
+    }, [])
+
+    if (!profile) {
+        return (
+            <>
+                loading...
+            </>
+        )
+    }
+
     return (
         <ProfileContainer>
-            <img src="https://github.com/MarcosDevPF.png" />
+            <img src={profile.avatar_url} />
 
             <ProfileContent>
                 <header>
-                    <h2>Marco Túlio Rodrigues da Silveira</h2>
+                    <h2>{profile.name}</h2>
 
-                    <a href="https://github.com/MarcosDevPF">
+                    <a
+                        href={profile.html_url}
+                        target="_blank"
+                    >
                         GITHUB
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                     </a>
@@ -20,7 +52,7 @@ export function Profile() {
 
                 <main>
                     <p>
-                        Aqui vai vir um texto da bio das pessoas que eu puxar da API do github. Vai ficar massa. (CONFIA)
+                        {profile.bio}
                     </p>
                 </main>
 
@@ -28,17 +60,17 @@ export function Profile() {
 
                     <div>
                         <FontAwesomeIcon icon={faGithub} />
-                        <span>MarcosDevPF</span>
+                        <span>{profile.login}</span>
                     </div>
 
                     <div>
                         <FontAwesomeIcon icon={faBuilding} />
-                        <span>Sharp</span>
+                        <span>{profile.company}</span>
                     </div>
 
                     <div>
                         <FontAwesomeIcon icon={faUserGroup} />
-                        <span>50 seguidores</span>
+                        <span>{profile.followers}</span>
                     </div>
 
                 </ProfileIcons>

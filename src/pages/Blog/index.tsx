@@ -1,4 +1,4 @@
-import { Post } from "../../components/Post";
+import { Posts } from "../../components/Posts";
 import { Profile } from "../../components/Profile";
 import { SearchForm } from "../../components/SearchForm";
 import { BlogContainer } from "./styles";
@@ -8,7 +8,7 @@ export function Blog() {
         <BlogContainer>
             <Profile />
             <SearchForm />
-            <Post />
+            <Posts />
         </BlogContainer>
     )
 }
