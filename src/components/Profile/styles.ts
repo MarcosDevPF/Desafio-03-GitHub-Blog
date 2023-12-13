@@ -5,9 +5,9 @@ export const ProfileContainer = styled.label`
     align-items: center;
     justify-content: space-between ;
 
-    max-width: 864px;
+    max-width: 54rem;
     margin: 0 auto;
-    max-height: 212px;
+    max-height: 13.25rem;
     padding: 0 1.5rem;
     margin-top: -7rem;
     gap: 2rem;

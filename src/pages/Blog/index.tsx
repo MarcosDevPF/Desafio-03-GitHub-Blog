@@ -1,10 +1,8 @@
-import { Header } from "../../components/Header";
 import { Profile } from "../../components/Profile";
 
-export function Home() {
+export function Blog() {
     return (
         <div>
-            <Header />
             <Profile />
         </div>
     )
