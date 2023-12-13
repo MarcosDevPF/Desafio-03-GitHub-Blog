@@ -17,25 +17,62 @@ export const ProfileContainer = styled.label`
     border-radius: 10px;
     background: ${({ theme }) => theme["base-profile"]};
     position: relative;
-    
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     img {
         border-radius: 8px;
         width: 148px;
         height: 148px;
     }
+
+    main {
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: ${({theme}) => theme["base-text"]};
+        }
+    }
 `
 
 export const ProfileContent = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-weight: 700;
+            font-size: 24px;
+            color: ${({theme}) => theme["base-title"]};
+            line-height: 1.3;
+        }
+
+        a {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 1.6;
+
+            color: ${({theme}) => theme.blue};
+            svg {
+                margin-left: 0.5rem;
+                size: 12px;
+            }
+        }
+    }
 `
 
-export const ProfileIcons = styled.div`
+export const ProfileIcons = styled.footer`
 
     width: 100%;
     display:flex;
     gap: 1.5rem;
+    margin-top: 1rem;
 
     div {
         display: flex;

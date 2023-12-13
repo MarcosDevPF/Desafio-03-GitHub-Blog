@@ -10,7 +10,7 @@ export function Profile() {
 
             <ProfileContent>
                 <header>
-                    <strong>Marco Túlio</strong>
+                    <h2>Marco Túlio Rodrigues da Silveira</h2>
 
                     <a href="https://github.com/MarcosDevPF">
                         GITHUB
@@ -18,7 +18,11 @@ export function Profile() {
                     </a>
                 </header>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptate delectus dolorum iure, consectetur, doloremque sed veritatis fugiat maxime sim.</p>
+                <main>
+                    <p>
+                        Aqui vai vir um texto da bio das pessoas que eu puxar da API do github. Vai ficar massa. (CONFIA)
+                    </p>
+                </main>
 
                 <ProfileIcons>
 
