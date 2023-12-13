@@ -1,4 +1,4 @@
-export function Post() {
+export function PostInfo() {
     return (
         <div>
             <h1>
