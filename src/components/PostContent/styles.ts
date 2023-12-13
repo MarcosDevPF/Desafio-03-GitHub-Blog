@@ -1,78 +1,57 @@
 import styled from "styled-components";
 
-export const ProfileContainer = styled.label`
+export const PostInfoContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between ;
 
     width: 54rem;
+    height: 10.5rem;
     padding: 0 1.5rem;
-    margin-top: -7rem;
+    margin-top: -5.6rem;
     gap: 2rem;
 
 
-    padding: 2rem 2.5rem;
+    padding: 2rem;
     border-radius: 10px;
     background: ${({ theme }) => theme["base-profile"]};
 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-    img {
-        border-radius: 8px;
-        width: 148px;
-        height: 148px;
-    }
-
-    main {
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: ${({ theme }) => theme["base-text"]};
-        }
-    }
 `
 
-export const ProfileContent = styled.div`
+export const PostInfoContent = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
 
-    header {
+    nav {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-
-        h2 {
-            font-weight: 700;
-            font-size: 24px;
-            color: ${({ theme }) => theme["base-title"]};
-            line-height: 1.3;
-        }
+        margin-bottom: 1.25rem;
 
         a {
-            border-bottom: 2px solid transparent;
-            font-weight: 700;
             font-size: 12px;
             line-height: 1.6;
-
+            display: flex;
+            align-items: center;
             color: ${({ theme }) => theme.blue};
+            border-bottom: 2px solid transparent;
+            gap: 0.5rem;
 
             &:hover {
                 border-bottom: 2px solid ${({ theme }) => theme.blue};
                 transition: 0.4s;
             }
-
-            svg {
-                margin-left: 0.5rem;
-                size: 12px;
-            }
         }
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 1.3;
+        color: ${({ theme }) => theme["base-title"]};
     }
 `
 
-export const ProfileIcons = styled.footer`
-
+export const PostContentIcons = styled.div`
     width: 100%;
     display:flex;
     gap: 1.5rem;
