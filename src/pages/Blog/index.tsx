@@ -1,11 +1,14 @@
+import { Post } from "../../components/Post";
 import { Profile } from "../../components/Profile";
 import { SearchForm } from "../../components/SearchForm";
+import { BlogContainer } from "./styles";
 
 export function Blog() {
     return (
-        <div>
+        <BlogContainer>
             <Profile />
             <SearchForm />
-        </div>
+            <Post />
+        </BlogContainer>
     )
 }

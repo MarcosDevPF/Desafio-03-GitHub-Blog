@@ -30,7 +30,7 @@ export const ProfileContainer = styled.label`
         p {
             font-size: 16px;
             line-height: 1.6;
-            color: ${({theme}) => theme["base-text"]};
+            color: ${({ theme }) => theme["base-text"]};
         }
     }
 `
@@ -49,16 +49,22 @@ export const ProfileContent = styled.div`
         h2 {
             font-weight: 700;
             font-size: 24px;
-            color: ${({theme}) => theme["base-title"]};
+            color: ${({ theme }) => theme["base-title"]};
             line-height: 1.3;
         }
 
         a {
+            border-bottom: 2px solid transparent;
             font-weight: 700;
             font-size: 12px;
             line-height: 1.6;
 
-            color: ${({theme}) => theme.blue};
+            color: ${({ theme }) => theme.blue};
+
+            &:hover {
+                border-bottom: 2px solid ${({ theme }) => theme.blue} ;
+            }
+
             svg {
                 margin-left: 0.5rem;
                 size: 12px;
