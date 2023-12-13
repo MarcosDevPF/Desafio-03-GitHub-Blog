@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PostContainer = styled.div`
-    margin: 0 auto;
     margin-top: 3rem;
     margin-bottom: 9rem;
     max-width: 54rem;

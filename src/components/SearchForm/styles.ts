@@ -6,8 +6,8 @@ export const SearchFormContainer = styled.div`
     flex-direction: column;
     gap: 12px;
 
-    max-width: 54rem;
-    margin: 0 auto;
+    width: 54rem;
+    /* margin: 0 auto; */
     margin-top: 4.5rem;
 
     > div {

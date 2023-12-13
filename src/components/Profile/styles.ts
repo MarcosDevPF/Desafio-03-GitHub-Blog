@@ -6,8 +6,6 @@ export const ProfileContainer = styled.label`
     justify-content: space-between ;
 
     max-width: 54rem;
-    margin: 0 auto;
-    max-height: 13.25rem;
     padding: 0 1.5rem;
     margin-top: -7rem;
     gap: 2rem;
@@ -62,7 +60,8 @@ export const ProfileContent = styled.div`
             color: ${({ theme }) => theme.blue};
 
             &:hover {
-                border-bottom: 2px solid ${({ theme }) => theme.blue} ;
+                border-bottom: 2px solid ${({ theme }) => theme.blue};
+                transition: 0.3s;
             }
 
             svg {

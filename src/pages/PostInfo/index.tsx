@@ -1,9 +1,11 @@
+import { PostInfoContainer } from "./styles";
+
 export function PostInfo() {
     return (
-        <div>
+        <PostInfoContainer>
             <h1>
                 Aqui vai vir os postes campeão
             </h1>
-        </div>
+        </PostInfoContainer>
     )
 }
