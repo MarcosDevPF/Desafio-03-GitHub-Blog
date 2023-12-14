@@ -10,7 +10,7 @@ interface Profile {
     name: string,
     bio: string,
     html_url: string,
-    company: string,
+    company?: string,
     login: string,
     followers: number
 }
@@ -67,10 +67,12 @@ export function Profile({ slug }: ProfileProps) {
                         <span>{profile.login}</span>
                     </div>
 
-                    <div>
-                        <FontAwesomeIcon icon={faBuilding} />
-                        <span>{profile.company}</span>
-                    </div>
+                    {profile?.company && (
+                        <div>
+                            <FontAwesomeIcon icon={faBuilding} />
+                            <span>{profile.company}</span>
+                        </div>
+                    )}
 
                     <div>
                         <FontAwesomeIcon icon={faUserGroup} />

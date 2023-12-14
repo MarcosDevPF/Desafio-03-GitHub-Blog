@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const PostContent = styled.a`
+export const PostContainer = styled(Link)`
     display: flex;
     flex-direction: column;
     max-width: 26rem;
@@ -28,6 +29,13 @@ export const PostContent = styled.a`
         font-size: 20px;
         line-height: 1.6;
         color: ${({ theme }) => theme["base-title"]};
+
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
 
     time {

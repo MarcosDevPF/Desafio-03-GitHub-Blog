@@ -1,31 +1,35 @@
-import { useContext } from "react";
-import { PostContent } from "./styles";
-import { PostsContext } from "../../contexts/PostsContext";
+import { PostContainer } from "./styles";
 
 import { format, formatDistanceToNow } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR"
+import { InfoPost } from "../Posts";
 
-export function Post() {
-  const { posts } = useContext(PostsContext)
+interface PostProps {
+  post: InfoPost
+}
+
+export function Post({ post }: PostProps) {
 
   const publishedDateFormatted = format(
-    new Date(posts.created_at),
+    new Date(post.created_at),
     "d 'de' LLLL 'às' HH:mm'h'",
     { locale: ptBr, }
   );
 
-  const diferenceDaysFormatted = formatDistanceToNow(new Date(posts.created_at), {
+  const diferenceDaysFormatted = formatDistanceToNow(new Date(post.created_at), {
     locale: ptBr
   })
 
   return (
-    <PostContent href="http://localhost:5173/post-info">
+    <PostContainer to={`/post-infos/${post.number}`}>
       <div>
-        <h1>{posts.title}</h1>
-        <time title={publishedDateFormatted}>{diferenceDaysFormatted}</time>
+        <h1>{post.title}</h1>
+        <time title={publishedDateFormatted}>
+          {diferenceDaysFormatted}
+        </time>
       </div>
 
-      <p>{posts.body}</p>
-    </PostContent>
+      <p>{post.body}</p>
+    </PostContainer>
   );
 }

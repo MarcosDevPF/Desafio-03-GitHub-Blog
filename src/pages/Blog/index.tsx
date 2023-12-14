@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Posts } from "../../components/Posts";
 import { Profile } from "../../components/Profile";
-import { SearchForm } from "../../components/SearchForm";
 import { BlogContainer } from "./styles";
 
 export function Blog() {
@@ -12,7 +11,6 @@ export function Blog() {
             <Profile
                 slug={slug as string}
             />
-            <SearchForm />
             <Posts />
         </BlogContainer>
     )
