@@ -1,14 +1,31 @@
+import { useContext } from "react";
 import { PostContent } from "./styles";
+import { PostsContext } from "../../contexts/PostsContext";
+
+import { format, formatDistanceToNow } from "date-fns";
+import ptBr from "date-fns/locale/pt-BR"
 
 export function Post() {
+  const { posts } = useContext(PostsContext)
+
+  const publishedDateFormatted = format(
+    new Date(posts.created_at),
+    "d 'de' LLLL 'às' HH:mm'h'",
+    { locale: ptBr, }
+  );
+
+  const diferenceDaysFormatted = formatDistanceToNow(new Date(posts.created_at), {
+    locale: ptBr
+  })
+
   return (
-    <PostContent>
+    <PostContent href="http://localhost:5173/post-info">
       <div>
-        <h1>JavaScript data types and data structures</h1>
-        <span>Há 1 dia</span>
+        <h1>{posts.title}</h1>
+        <time title={publishedDateFormatted}>{diferenceDaysFormatted}</time>
       </div>
 
-      <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...</p>
+      <p>{posts.body}</p>
     </PostContent>
   );
 }

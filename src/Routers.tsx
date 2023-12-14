@@ -7,7 +7,7 @@ export function Routers() {
     return (
         <Routes>
             <Route path="/" element={<DefaultLayout />}>
-                <Route path="/" element={<Blog />} />
+                <Route path="/:slug" element={<Blog />} />
                 <Route path="/post-info" element={<PostInfo />} />
             </Route>
         </Routes>

@@ -15,11 +15,15 @@ interface Profile {
     followers: number
 }
 
-export function Profile() {
+type ProfileProps = {
+    slug: string;
+}
+
+export function Profile({ slug }: ProfileProps) {
     const [profile, setProfile] = useState<Profile | null>(null)
 
     useEffect(() => {
-        api.get('/users/MarcosDevPF')
+        api.get(`/users/${slug}`)
             .then(response => {
                 setProfile(response.data)
             })

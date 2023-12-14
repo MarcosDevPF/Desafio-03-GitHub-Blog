@@ -7,7 +7,6 @@ export const SearchFormContainer = styled.div`
     gap: 12px;
 
     width: 54rem;
-    /* margin: 0 auto; */
     margin-top: 4.5rem;
 
     > div {
@@ -28,15 +27,19 @@ export const SearchFormContainer = styled.div`
         line-height: 1.6;
         color: ${({ theme }) => theme["base-span"]};
     }
+`
+
+export const SearchFormContent = styled.form`
+    width: 100%;
 
     input {
-        width: 100%;
-        padding: 1rem;
-        border: 0;
-        background: ${({ theme }) => theme["base-input"]};
-        color: ${({ theme }) => theme["base-label"]};
-        outline: 1px solid ${({ theme }) => theme["base-border"]};
-        border-radius: 6px;
-        height: 50px;
+    width: 100%;
+    padding: 1rem;
+    border: 0;
+    background: ${({ theme }) => theme["base-input"]};
+    color: ${({ theme }) => theme["base-label"]};
+    outline: 1px solid ${({ theme }) => theme["base-border"]};
+    border-radius: 6px;
+    height: 50px;
     }
 `

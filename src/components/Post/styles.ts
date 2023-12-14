@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PostContent = styled.div`
+export const PostContent = styled.a`
     display: flex;
     flex-direction: column;
     max-width: 26rem;
@@ -30,7 +30,7 @@ export const PostContent = styled.div`
         color: ${({ theme }) => theme["base-title"]};
     }
 
-    span {
+    time {
         font-size: 14px;
         line-height: 1.6;
         color: ${({ theme }) => theme["base-span"]};
@@ -39,5 +39,12 @@ export const PostContent = styled.div`
     p {
         line-height: 1.6;
         color: ${({ theme }) => theme["base-text"]};
+
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
     }
 `
