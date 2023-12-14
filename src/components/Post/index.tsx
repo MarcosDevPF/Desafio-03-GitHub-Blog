@@ -17,14 +17,18 @@ export function Post({ post }: PostProps) {
   );
 
   const diferenceDaysFormatted = formatDistanceToNow(new Date(post.created_at), {
-    locale: ptBr
+    locale: ptBr,
+    addSuffix: true,
   })
 
   return (
     <PostContainer to={`/post-infos/${post.number}`}>
       <div>
         <h1>{post.title}</h1>
-        <time title={publishedDateFormatted}>
+        <time
+          title={publishedDateFormatted}
+          dateTime={post.created_at.toString()}
+        >
           {diferenceDaysFormatted}
         </time>
       </div>

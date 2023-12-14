@@ -22,10 +22,11 @@ export const PostContainer = styled(Link)`
         display: flex;
         align-items: baseline;
         margin-bottom: 1.25rem;
+        gap: 1rem;
     }
 
     h1 {
-        width: 283px;
+        max-width: 17.6875rem;
         font-size: 20px;
         line-height: 1.6;
         color: ${({ theme }) => theme["base-title"]};
@@ -38,7 +39,7 @@ export const PostContainer = styled(Link)`
         -webkit-line-clamp: 2;
     }
 
-    time {
+    time { 
         font-size: 14px;
         line-height: 1.6;
         color: ${({ theme }) => theme["base-span"]};
