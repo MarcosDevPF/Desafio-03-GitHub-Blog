@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Post } from "../Post";
+import { PostCard } from "../PostCard";
 import { NoIssues, PostContainer } from "./styles";
 import { api } from "../../lib/axios";
 import { SearchForm } from "../SearchForm";
@@ -54,7 +54,7 @@ export function Posts() {
             <SearchForm postsQuantity={posts.length} getPosts={getPosts} />
             <PostContainer>
                 {posts.map((post) => (
-                    <Post key={post.number} post={post} />
+                    <PostCard key={post.number} post={post} />
                 ))}
             </PostContainer>
         </>

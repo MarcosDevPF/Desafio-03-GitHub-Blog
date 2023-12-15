@@ -4,11 +4,11 @@ import { format, formatDistanceToNowStrict } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR"
 import { InfoPost } from "../Posts";
 
-interface PostProps {
+interface PostCardProps {
   post: InfoPost
 }
 
-export function Post({ post }: PostProps) {
+export function PostCard({ post }: PostCardProps) {
 
   const publishedDateFormatted = format(
     new Date(),
