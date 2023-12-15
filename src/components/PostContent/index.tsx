@@ -6,40 +6,46 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
 import { faComment } from "@fortawesome/free-solid-svg-icons/faComment";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
+import { InfoPost } from "../Posts";
 
-export function PostContent() {
+interface PostContentProps {
+    postContent: InfoPost
+}
+
+export function PostContent({ postContent }: PostContentProps) {
+
     return (
         <PostInfoContainer>
             <PostInfoContent>
                 <nav>
-                    <a href="http://localhost:5173/">
+                    <a href="/">
                         <FontAwesomeIcon icon={faChevronLeft} />
                         VOLTAR
                     </a>
 
-                    <a href="https://github.com/MarcosDevPF/Desafio-03-GitHub-Blog/issues/1#issue-2039600953">
+                    <a href="/MarcosDevPF/Desafio-03-GitHub-Blog/issues/1">
                         VER NO GITHUB
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                     </a>
                 </nav>
 
-                <h2>JavaScript data types and data structures</h2>
+                <h2>{postContent.title}</h2>
 
                 <PostContentIcons>
 
                     <div>
                         <FontAwesomeIcon icon={faGithub} />
-                        <span>MarcosDevPF</span>
+                        <span>{postContent.user.login}</span>
                     </div>
 
                     <div>
                         <FontAwesomeIcon icon={faCalendarDay} />
-                        <span>Há 1 dia</span>
+                        <span>{postContent.created_at}</span>
                     </div>
 
                     <div>
                         <FontAwesomeIcon icon={faComment} />
-                        <span>1 comentário</span>
+                        <span>{postContent.comments} comentário</span>
                     </div>
 
                 </PostContentIcons>

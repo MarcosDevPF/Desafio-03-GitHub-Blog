@@ -1,6 +1,6 @@
 import { PostContainer } from "./styles";
 
-import { format, formatDistanceToNow } from "date-fns";
+import { format, formatDistanceToNowStrict } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR"
 import { InfoPost } from "../Posts";
 
@@ -11,15 +11,18 @@ interface PostProps {
 export function Post({ post }: PostProps) {
 
   const publishedDateFormatted = format(
-    new Date(post.created_at),
-    "d 'de' LLLL 'às' HH:mm'h'",
+    new Date(),
+    "d 'de' LLLL 'às' HH:mm",
     { locale: ptBr, }
   );
 
-  const diferenceDaysFormatted = formatDistanceToNow(new Date(post.created_at), {
-    locale: ptBr,
-    addSuffix: true,
-  })
+  const diferenceDaysFormatted = formatDistanceToNowStrict(
+    new Date(post.created_at),
+    {
+      locale: ptBr,
+      addSuffix: true
+    }
+  )
 
   return (
     <PostContainer to={`/post-infos/${post.number}`}>

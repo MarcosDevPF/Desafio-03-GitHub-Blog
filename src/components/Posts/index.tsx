@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Post } from "../Post";
-import { PostContainer } from "./styles";
+import { NoIssues, PostContainer } from "./styles";
 import { api } from "../../lib/axios";
 import { SearchForm } from "../SearchForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceSadCry } from "@fortawesome/free-regular-svg-icons";
 
 export interface InfoPost {
     title: string,
@@ -35,6 +37,17 @@ export function Posts() {
     useEffect(() => {
         getPosts()
     }, [])
+
+    if (posts.length === 0) {
+        return (
+            <>
+                <NoIssues>
+                    Este usuário não possui issues
+                    <FontAwesomeIcon icon={faFaceSadCry} />
+                </NoIssues>
+            </>
+        )
+    }
 
     return (
         <>

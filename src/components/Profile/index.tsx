@@ -1,5 +1,5 @@
 import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { ProfileContainer, ProfileContent, ProfileIcons } from "./styles";
+import { ProfileContainer, ProfileContent, ProfileIcons, Spinner } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { useEffect, useState } from "react";
@@ -15,15 +15,11 @@ interface Profile {
     followers: number
 }
 
-type ProfileProps = {
-    slug: string;
-}
-
-export function Profile({ slug }: ProfileProps) {
+export function Profile() {
     const [profile, setProfile] = useState<Profile | null>(null)
 
     useEffect(() => {
-        api.get(`/users/${slug}`)
+        api.get(`/users/MarcosDevPF`)
             .then(response => {
                 setProfile(response.data)
             })
@@ -32,7 +28,7 @@ export function Profile({ slug }: ProfileProps) {
     if (!profile) {
         return (
             <>
-                loading...
+                <Spinner />
             </>
         )
     }
