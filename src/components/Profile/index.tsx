@@ -8,18 +8,20 @@ import { api } from "../../lib/axios";
 interface Profile {
     avatar_url: string,
     name: string,
-    bio: string,
+    bio?: string,
     html_url: string,
     company?: string,
     login: string,
     followers: number
 }
 
+const username = import.meta.env.VITE_GITHUB_USERNAME;
+
 export function Profile() {
     const [profile, setProfile] = useState<Profile | null>(null)
 
     useEffect(() => {
-        api.get(`/users/MarcosDevPF`)
+        api.get(`/users/${username}`)
             .then(response => {
                 setProfile(response.data)
             })
@@ -51,9 +53,13 @@ export function Profile() {
                 </header>
 
                 <main>
-                    <p>
-                        {profile.bio}
-                    </p>
+                    {profile.bio ? (
+                        <p>
+                            {profile.bio}
+                        </p>
+                    ) : (
+                        <p>(Usuário sem bio)</p>
+                    )}
                 </main>
 
                 <ProfileIcons>
@@ -63,16 +69,21 @@ export function Profile() {
                         <span>{profile.login}</span>
                     </div>
 
-                    {profile?.company && (
+                    {profile.company ? (
                         <div>
                             <FontAwesomeIcon icon={faBuilding} />
                             <span>{profile.company}</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <FontAwesomeIcon icon={faBuilding} />
+                            <span>(Usuário sem empresa)</span>
                         </div>
                     )}
 
                     <div>
                         <FontAwesomeIcon icon={faUserGroup} />
-                        <span>{profile.followers}</span>
+                        <span>{profile.followers} seguidores</span>
                     </div>
 
                 </ProfileIcons>

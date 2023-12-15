@@ -1,8 +1,9 @@
-import { PostContainer } from "./styles";
+import { DescriptionInMarkdown, PostContainer } from "./styles";
 
 import { format, formatDistanceToNowStrict } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR"
 import { InfoPost } from "../Posts";
+import ReactMarkdown from "react-markdown";
 
 interface PostCardProps {
   post: InfoPost
@@ -36,7 +37,11 @@ export function PostCard({ post }: PostCardProps) {
         </time>
       </div>
 
-      <p>{post.body}</p>
+      <DescriptionInMarkdown>
+        <ReactMarkdown>
+          {post.body}
+        </ReactMarkdown>
+      </DescriptionInMarkdown>
     </PostContainer>
   );
 }

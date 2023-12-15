@@ -16,4 +16,9 @@ export const PostContentDescriptionContainer = styled.div`
         color: ${({ theme }) => theme.blue};
         text-decoration: underline;
     }
+
+    img {
+        margin-top: 2rem;
+        width: 100%;
+    }
 `

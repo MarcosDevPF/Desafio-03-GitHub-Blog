@@ -9,30 +9,3 @@ export const PostContainer = styled.div`
     grid-row-gap: 2rem;
     grid-column-gap: 2.3125rem;
 `
-
-export const NoIssues = styled.span`
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    width: 54rem;
-    height: 26.50rem;
-    border-radius: 10px;
-    padding: 10rem;
-
-    font-size: 38px;
-    line-height: 1.3;
-
-
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column-reverse;
-    gap: 2rem;
-    background: ${({ theme }) => theme["base-post"]};
-    outline: 4px solid ${({ theme }) => theme["base-border"]};
-
-    svg {
-        width: 150px;
-        height: 150px;
-    }
-`

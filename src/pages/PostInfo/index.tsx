@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { InfoPost } from "../../components/Posts";
 
+const username = import.meta.env.VITE_GITHUB_USERNAME;
+const repoName = import.meta.env.VITE_GITHUB_REPONAME;
+
 export function PostInfo() {
     const [postDetails, setPostDetails] = useState<InfoPost>({} as InfoPost)
     const [isLoading, setIsLoading] = useState(true)
@@ -18,7 +21,7 @@ export function PostInfo() {
                 setIsLoading(true)
 
                 const response = await api.get(
-                    `/repos/MarcosDevPF/Desafio-03-GitHub-Blog/issues/${number}`
+                    `/repos/${username}/${repoName}/issues/${number}`
                 );
 
                 setPostDetails(response.data)
@@ -36,7 +39,7 @@ export function PostInfo() {
     return (
         <PostInfoContainer>
             <PostHeader isLoading={isLoading} postDetails={postDetails} />
-            <PostContent />
+            {!isLoading && <PostContent content={postDetails.body} />}
         </PostInfoContainer>
     )
 }

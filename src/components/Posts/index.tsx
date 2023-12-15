@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { PostCard } from "../PostCard";
-import { NoIssues, PostContainer } from "./styles";
+import { PostContainer } from "./styles";
 import { api } from "../../lib/axios";
 import { SearchForm } from "../SearchForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceSadCry } from "@fortawesome/free-regular-svg-icons";
 
 export interface InfoPost {
     title: string,
@@ -18,6 +16,9 @@ export interface InfoPost {
     }
 }
 
+const username = import.meta.env.VITE_GITHUB_USERNAME;
+const repoName = import.meta.env.VITE_GITHUB_REPONAME;
+
 export function Posts() {
     const [posts, setPosts] = useState<InfoPost[]>([])
 
@@ -25,7 +26,7 @@ export function Posts() {
         async (query: string = "") => {
             try {
                 const response = await api.get(
-                    `/search/issues?q=${query}%20repo:MarcosDevPF/Desafio-03-GitHub-Blog`
+                    `/search/issues?q=${query}%20repo:${username}/${repoName}`
                 )
                 setPosts(response.data.items)
             } finally {
@@ -38,17 +39,6 @@ export function Posts() {
         getPosts()
     }, [])
 
-    if (posts.length === 0) {
-        return (
-            <>
-                <NoIssues>
-                    Este usuário não possui issues
-                    <FontAwesomeIcon icon={faFaceSadCry} />
-                </NoIssues>
-            </>
-        )
-    }
-
     return (
         <>
             <SearchForm postsQuantity={posts.length} getPosts={getPosts} />
@@ -60,3 +50,4 @@ export function Posts() {
         </>
     )
 }
+

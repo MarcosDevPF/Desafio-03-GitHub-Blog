@@ -45,16 +45,16 @@ export const PostContainer = styled(Link)`
         line-height: 1.6;
         color: ${({ theme }) => theme["base-span"]};
     }
+`
 
-    p {
-        line-height: 1.6;
-        color: ${({ theme }) => theme["base-text"]};
+export const DescriptionInMarkdown = styled.p`
+    line-height: 1.6;
+    color: ${({ theme }) => theme["base-text"]};
 
-        overflow: hidden !important;
-        text-overflow: ellipsis;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
-    }
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
 `

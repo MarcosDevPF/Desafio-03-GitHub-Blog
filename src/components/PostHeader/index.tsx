@@ -1,5 +1,5 @@
 import { PostContentIcons, PostInfoContainer, PostInfoContent } from "./styles";
-
+import ptBr from "date-fns/locale/pt-BR"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -8,6 +8,8 @@ import { faComment } from "@fortawesome/free-solid-svg-icons/faComment";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
 import { InfoPost } from "../Posts";
 import { Spinner } from "../Profile/styles";
+import { format, formatDistanceToNowStrict } from "date-fns";
+
 
 export interface PostHeaderProps {
     postDetails: InfoPost
@@ -15,6 +17,26 @@ export interface PostHeaderProps {
 }
 
 export function PostHeader({ postDetails, isLoading }: PostHeaderProps) {
+
+    const publishedDateFormatted = format(
+        new Date(),
+        "d 'de' LLLL 'às' HH:mm",
+        { locale: ptBr, }
+    );
+
+    const diferenceDaysFormatted = () => {
+        if (postDetails.created_at) {
+            return formatDistanceToNowStrict(
+                new Date(postDetails.created_at),
+                {
+                    locale: ptBr,
+                    addSuffix: true
+                }
+            );
+        } else {
+            return "loading...";
+        }
+    };
 
     return (
         <PostInfoContainer>
@@ -27,7 +49,7 @@ export function PostHeader({ postDetails, isLoading }: PostHeaderProps) {
                                 VOLTAR
                             </a>
 
-                            <a href={postDetails.html_url}>
+                            <a href={postDetails.html_url} target="_blank">
                                 VER NO GITHUB
                                 <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                             </a>
@@ -44,7 +66,12 @@ export function PostHeader({ postDetails, isLoading }: PostHeaderProps) {
 
                             <div>
                                 <FontAwesomeIcon icon={faCalendarDay} />
-                                <span>{postDetails.created_at}</span>
+                                <time
+                                    title={publishedDateFormatted}
+                                    dateTime={postDetails.created_at.toString()}
+                                >
+                                    {diferenceDaysFormatted()}
+                                </time>
                             </div>
 
                             <div>

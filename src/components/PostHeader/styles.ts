@@ -69,5 +69,9 @@ export const PostContentIcons = styled.div`
         span {
             color: ${({ theme }) => theme["base-label"]};
         }
+
+        time {
+            color: ${({ theme }) => theme["base-label"]};
+        }
     }
 `
