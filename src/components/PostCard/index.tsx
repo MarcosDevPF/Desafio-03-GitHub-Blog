@@ -25,7 +25,7 @@ export function PostCard({ post }: PostCardProps) {
   )
 
   return (
-    <PostContainer to={`/post-infos/${post.number}`}>
+    <PostContainer to={`/post-info/${post.number}`}>
       <div>
         <h1>{post.title}</h1>
         <time

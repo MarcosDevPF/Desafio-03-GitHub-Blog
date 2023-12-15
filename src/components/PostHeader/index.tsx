@@ -6,46 +6,58 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
 import { faComment } from "@fortawesome/free-solid-svg-icons/faComment";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
+import { InfoPost } from "../Posts";
+import { Spinner } from "../Profile/styles";
 
-export function PostHeader() {
+export interface PostHeaderProps {
+    postDetails: InfoPost
+    isLoading: boolean
+}
+
+export function PostHeader({ postDetails, isLoading }: PostHeaderProps) {
 
     return (
         <PostInfoContainer>
-            <PostInfoContent>
-                <nav>
-                    <a href="/">
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                        VOLTAR
-                    </a>
+            {isLoading ? <Spinner /> : (
+                <>
+                    <PostInfoContent>
+                        <nav>
+                            <a href="/">
+                                <FontAwesomeIcon icon={faChevronLeft} />
+                                VOLTAR
+                            </a>
 
-                    <a href="/MarcosDevPF/Desafio-03-GitHub-Blog/issues/1">
-                        VER NO GITHUB
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                    </a>
-                </nav>
+                            <a href={postDetails.html_url}>
+                                VER NO GITHUB
+                                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                            </a>
+                        </nav>
 
-                <h2>teste de titulo</h2>
+                        <h2>{postDetails.title}</h2>
 
-                <PostContentIcons>
+                        <PostContentIcons>
 
-                    <div>
-                        <FontAwesomeIcon icon={faGithub} />
-                        <span>MarcosDevPF</span>
-                    </div>
+                            <div>
+                                <FontAwesomeIcon icon={faGithub} />
+                                <span>{postDetails.user.login}</span>
+                            </div>
 
-                    <div>
-                        <FontAwesomeIcon icon={faCalendarDay} />
-                        <span>há 1 dia</span>
-                    </div>
+                            <div>
+                                <FontAwesomeIcon icon={faCalendarDay} />
+                                <span>{postDetails.created_at}</span>
+                            </div>
 
-                    <div>
-                        <FontAwesomeIcon icon={faComment} />
-                        <span>1 comentário</span>
-                    </div>
+                            <div>
+                                <FontAwesomeIcon icon={faComment} />
+                                <span>{postDetails.comments} comentário</span>
+                            </div>
 
-                </PostContentIcons>
+                        </PostContentIcons>
 
-            </PostInfoContent>
+                    </PostInfoContent>
+                </>
+            )}
+
         </PostInfoContainer>
     )
 }
